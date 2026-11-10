@@ -19,7 +19,22 @@ y obstáculos saltando y compite por el mejor tiempo en una clasificación en l�
 - Git, GitHub y GitHub Projects
 
 ## Estado
-En fase de análisis y diseño.
+Análisis completado (T3). En fase de diseño y primeras pantallas.
 
 ## Instalación y ejecución
-Se completará cuando exista la primera versión jugable.
+
+### Requisitos
+- [Godot Engine 4.4](https://godotengine.org/download) (versión estándar, no la .NET)
+- Git o GitHub Desktop para clonar el repositorio
+
+### Pasos
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/ecorderoav/WWwE.git
+   ```
+   O con GitHub Desktop: *File → Clone repository*.
+2. Abre Godot 4.4 y, en el gestor de proyectos, pulsa **Importar**.
+3. Selecciona el archivo `project.godot` de la carpeta clonada y pulsa **Importar y editar**.
+4. Pulsa **F5** (o el botón ▶) para ejecutar el juego.
+
+> De momento el juego solo muestra el menú principal. La conexión con Supabase (cuentas y clasificación) se añadirá en las próximas versiones.
