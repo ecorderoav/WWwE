@@ -1,5 +1,5 @@
 # T3 . Aportación de Jordi Muñoz Sánchez
-## Requisitos no fuuncionales
+## 1.Requisitos no fuuncionales
 | ID | Tipo | Descripción | Prioridad |
 |---|---|---|---|
 |RNF-05| Usabilidad | El juego mostrará en pantalla los controles básicos. Un usuario nuevo podrá interactuar con el personaje en poco tiempo. | Alta |
@@ -7,7 +7,7 @@
 |RNF-07| Tiempo de respuesta | Las acciones de movimiento  y salto responderán rápido con el juego en condiciones normales. | Media |
 |RNF-08| Compatibilidad | La versión de escritorio deberá  poder instalarse, abrirse y jugarse en Windows 10/11 y en una distribución de Linux. | Alta |
 
-## Revisión de los requisitos funcionales.
+## 2.Revisión de los requisitos funcionales.
 
 Después de revisar la tabla de los 21 requisitos funcionales, todos son verificables, pero algunos necesitan criterios de aceptación más concretos.
 Los que necesitan mayor concreción son RF-09, RF-11, RF-19, RF-20 y RF-21, ya que no especifican suficientemente el comportamiento esperado del sistema.
