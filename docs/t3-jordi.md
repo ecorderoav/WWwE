@@ -1,4 +1,5 @@
 # T3 . Aportación de Jordi Muñoz Sánchez
+## Requisitos no fuuncionales
 | ID | Tipo | Descripción | Prioridad |
 |---|---|---|---|
 |RNF-05| Usabilidad | El juego mostrará en pantalla los controles básicos. Un usuario nuevo podrá interactuar con el personaje en poco tiempo. | Alta |
