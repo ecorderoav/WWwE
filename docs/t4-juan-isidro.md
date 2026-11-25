@@ -6,7 +6,7 @@
 
 ## Explicación del modelo
 
-He separado la cuenta de Supabase Auth de los datos propios del juego. Auth se encarga del correo, la contraseña y la sesión, mientras que la tabla `players` guarda el nombre que se muestra en el juego y la fecha de nacimiento. La fecha se valida al crear o modificar el jugador para impedir registros de menores de 14 años. La contraseña no se copia en ninguna tabla pública.
+Hemos separado la cuenta de Supabase Auth de los datos propios del juego. Auth se encarga del correo, la contraseña y la sesión, mientras que la tabla `players` guarda el nombre que se muestra en el juego y la fecha de nacimiento. Al registrarse, el juego envía `nombre_usuario` y `fecha_nacimiento` dentro de los metadatos y un trigger crea automáticamente el perfil y la configuración inicial. La fecha se valida para impedir registros de menores de 14 años y la contraseña no se copia en ninguna tabla pública.
 
 Cada jugador tiene una configuración y puede tener un registro de progreso por nivel y una mejor marca por luna. Las lunas y los niveles son tablas independientes, por lo que se pueden añadir niveles sin cambiar la estructura del jugador. Las políticas RLS permiten que cada usuario lea y modifique solamente sus datos. La clasificación se consulta mediante `get_leaderboard`, que es pública pero devuelve únicamente el nombre de la luna, el alias, el tiempo y la posición.
 
@@ -59,7 +59,6 @@ erDiagram
         bigint level_id PK_FK
         boolean unlocked
         boolean completed
-        jsonb checkpoint
         timestamptz completed_at
         timestamptz updated_at
     }
@@ -68,7 +67,6 @@ erDiagram
         uuid user_id FK
         bigint moon_id FK
         bigint duration_ms
-        text game_version
         timestamptz achieved_at
     }
 ```
@@ -133,7 +131,6 @@ La combinación `moon_id + level_number` es única.
 | `level_id` | `bigint` | PK compuesta y FK a `levels.id` |
 | `unlocked` | `boolean` | Obligatorio |
 | `completed` | `boolean` | Obligatorio; requiere el nivel desbloqueado |
-| `checkpoint` | `jsonb` | Objeto JSON con el punto de guardado |
 | `completed_at` | `timestamptz` | Admite nulo |
 | `updated_at` | `timestamptz` | Obligatoria, valor automático |
 
@@ -145,7 +142,6 @@ La combinación `moon_id + level_number` es única.
 | `user_id` | `uuid` | FK a `players.user_id`, borrado en cascada |
 | `moon_id` | `bigint` | FK a `moons.id` |
 | `duration_ms` | `bigint` | Obligatorio y mayor que 0 |
-| `game_version` | `text` | Obligatoria |
 | `achieved_at` | `timestamptz` | Obligatoria, valor automático |
 
 La combinación `user_id + moon_id` es única, de forma que cada jugador conserva una sola mejor marca por luna.
@@ -157,4 +153,5 @@ La combinación `user_id + moon_id` es única, de forma que cada jugador conserv
 - `moons` y `levels` son datos de consulta pública.
 - `submit_best_time` comprueba el usuario autenticado y conserva el tiempo menor.
 - `get_leaderboard` puede ejecutarse sin iniciar sesión, pero solo devuelve luna, alias, tiempo y posición.
-- El archivo SQL está preparado, pero todavía debe ejecutarse y probarse en el proyecto de Supabase del grupo.
+- `delete_own_account` permite que cada jugador elimine su propia cuenta y activa el borrado en cascada de sus datos.
+- El archivo SQL se ejecutó y verificó en el proyecto de Supabase del grupo el 25/11/2026.
