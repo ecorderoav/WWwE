@@ -38,3 +38,20 @@ Análisis completado (T3). En fase de diseño y primeras pantallas.
 4. Pulsa **F5** (o el botón ▶) para ejecutar el juego.
 
 > De momento el juego solo muestra el menú principal. La conexión con Supabase (cuentas y clasificación) se añadirá en las próximas versiones.
+
+## Estado de la implementación (T4 · 26/11/2026)
+
+| Funcionalidad | Estado |
+|---|---|
+| Base de datos en Supabase: tablas, RLS y funciones (`supabase/migrations/`) | ✅ Hecho |
+| Conexión del juego con Supabase (`scripts/autoload/supabase.gd`) | ✅ Hecho |
+| Registro con validación y edad mínima de 14 años | ✅ Hecho |
+| Inicio de sesión | ✅ Hecho |
+| Menú principal | 🟡 En parte: las opciones aún no abren su pantalla |
+| Niveles, enemigos, cronómetro, historia y progreso | ⏳ Pendiente (T5) |
+| Clasificación, perfil y configuración | ⏳ Pendiente (T5) |
+
+### Cómo probarlo
+1. Abrir el proyecto con Godot 4.4.
+2. Ejecutar con F5: la primera pantalla es el inicio de sesión.
+3. Crear una cuenta desde «Regístrate»: el jugador aparece en la tabla `players` de Supabase.
