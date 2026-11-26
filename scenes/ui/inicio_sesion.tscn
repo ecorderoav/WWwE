@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5oluj5lsx08x"]
+
+[ext_resource type="Script" uid="uid://bqs84sbjx04v6" path="res://scripts/pantallas/inicio_sesion.gd" id="1_d1ags"]
+
+[node name="InicioSesion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d1ags")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 637.0
+offset_bottom = 363.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "What's Wrong with Earth?"
+
+[node name="Correo" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Correo"
+
+[node name="Contrasena" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+placeholder_text = "Contraseña"
+
+[node name="Entrar" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Iniciar sesión"
+
+[node name="CrearCuenta" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¿No tienes cuenta? Regístrate"
+flat = true
+
+[node name="Mensaje" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
